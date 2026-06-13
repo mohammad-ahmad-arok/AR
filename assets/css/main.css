@@ -1,0 +1,683 @@
+:root {
+    --bg-creamy: #FDFBF7;
+    --paper: #F7F2E9;
+    --navy-royal: #1A2E40;
+    --navy-light: #243d54;
+    --gold-matte: #C5A059;
+    --gold-light: #E6D2A9;
+    --gold-deep: #A87E3C;
+    --text-dark: #2F3E46;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--bg-creamy);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+/* === 1. الظرف الملكي (Cream & Gold) === */
+#envelope-wrapper {
+    position: fixed;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1578070181910-f1e514afdd08?auto=format&fit=crop&q=80');
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 40%, #fffaf0 0%, #ecddc4 55%, #d9c6a3 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    perspective: 1800px;
+}
+
+#envelope-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.03) 0px, rgba(197, 160, 89, 0.03) 2px, transparent 2px, transparent 14px);
+    pointer-events: none;
+}
+
+.envelope-stage {
+    position: relative;
+    width: min(360px, 82vw);
+    aspect-ratio: 3 / 2;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 8px;
+    filter: drop-shadow(0 25px 45px rgba(80, 60, 20, 0.28));
+}
+
+/* جسم الظرف */
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #fffdf8 0%, var(--paper) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.envelope-front::after {
+    /* خطوط الطية السفلية لإيهام العمق */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, transparent 48%, rgba(197, 160, 89, 0.10) 49.3%, transparent 50.6%),
+        linear-gradient(-135deg, transparent 48%, rgba(197, 160, 89, 0.10) 49.3%, transparent 50.6%);
+    background-size: 100% 100%;
+    background-position: top left, top right;
+    background-repeat: no-repeat;
+    clip-path: polygon(0 100%, 50% 42%, 100% 100%);
+}
+
+/* غطاء الظرف العلوي (مثلث يفتح) */
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #ffffff 0%, #fdf9ee 100%);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 8px 8px 0 0;
+    clip-path: polygon(0 0, 100% 0, 50% 58%);
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    z-index: 4;
+    filter: drop-shadow(0 4px 10px rgba(120, 90, 40, 0.10));
+}
+
+/* الختم الشمعي الذهبي */
+.wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 23%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(20px, 6vw, 28px);
+    color: #6e4c1c;
+    background: radial-gradient(circle at 35% 30%, #f3da9c 0%, var(--gold-matte) 55%, var(--gold-deep) 100%);
+    box-shadow:
+        0 6px 14px rgba(110, 76, 28, 0.35),
+        inset 0 2px 5px rgba(255, 255, 255, 0.55),
+        inset 0 -4px 8px rgba(110, 76, 28, 0.35);
+    border: 1px solid rgba(110, 76, 28, 0.2);
+    transition: transform 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.wax-seal::before {
+    content: '';
+    position: absolute;
+    inset: 7%;
+    border-radius: 50%;
+    border: 1px dashed rgba(110, 76, 28, 0.35);
+}
+
+.wax-seal:hover {
+    transform: translate(-50%, -50%) scale(1.06);
+}
+
+.click-hint {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--navy-royal);
+    font-size: 14px;
+    z-index: 5;
+    animation: pulse 1.8s infinite;
+    letter-spacing: 0.5px;
+}
+
+.pulse-icon {
+    color: var(--gold-deep);
+    margin-left: 6px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.65;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+/* === 2. محتوى الموقع === */
+#main-website {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Amiri', serif;
+    font-size: 36px;
+    color: var(--navy-royal);
+    margin-bottom: 16px;
+}
+
+.section-title i {
+    color: var(--gold-matte);
+    font-size: 28px;
+    margin-left: 10px;
+}
+
+.section-divider {
+    width: 70px;
+    height: 2px;
+    background: var(--gold-matte);
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.section-divider::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-matte);
+    font-size: 14px;
+    background: var(--bg-creamy);
+    padding: 0 6px;
+}
+
+.countdown-section .section-divider::before {
+    background: var(--navy-royal);
+}
+
+.rsvp-section .section-divider::before {
+    background: var(--navy-light);
+}
+
+/* القسم 1: الهيرو */
+.hero-section {
+    background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-section .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(253, 251, 247, 0.88);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.quran-verse {
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    color: var(--navy-royal);
+    line-height: 2;
+    margin-bottom: 30px;
+}
+
+.wedding-title {
+    font-size: 18px;
+    color: var(--gold-matte);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.couple-names {
+    font-family: 'Amiri', serif;
+    font-size: 60px;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--navy-royal) 35%, var(--gold-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--navy-royal);
+    margin-bottom: 20px;
+}
+
+.couple-names span {
+    color: var(--gold-matte);
+    -webkit-text-fill-color: var(--gold-matte);
+    font-family: 'Tajawal', sans-serif;
+    font-size: 35px;
+    margin: 0 10px;
+}
+
+.hero-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.scroll-down {
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+    color: var(--gold-deep);
+    font-size: 26px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* القسم 2: العداد */
+.countdown-section {
+    background-color: var(--navy-royal);
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(197, 160, 89, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(197, 160, 89, 0.08) 0%, transparent 40%);
+    color: white;
+}
+
+.countdown-section .section-title {
+    color: white;
+}
+
+.date-text {
+    color: var(--gold-light);
+    font-size: 22px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.countdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.countdown-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(197, 160, 89, 0.5);
+    padding: 22px 18px;
+    border-radius: 10px;
+    min-width: 100px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.countdown-box:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold-light);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.countdown-number {
+    font-size: 42px;
+    font-family: 'Amiri', serif;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+/* القسم 3: التايم لاين (عمود واحد - بدون تشتت) */
+.timeline-section {
+    background-color: var(--bg-creamy);
+}
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    right: 22px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold-matte), rgba(197, 160, 89, 0.15));
+}
+
+.timeline-item {
+    position: relative;
+    width: 100%;
+    padding-right: 55px;
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 46px;
+    height: 46px;
+    background: var(--navy-royal);
+    border: 2px solid var(--gold-matte);
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold-light);
+    font-size: 18px;
+}
+
+.timeline-panel {
+    background: white;
+    padding: 22px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border-right: 3px solid var(--gold-matte);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-panel:hover {
+    transform: translateX(-6px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-time {
+    color: var(--gold-deep);
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 17px;
+}
+
+.timeline-panel h4 {
+    font-family: 'Amiri', serif;
+    font-size: 23px;
+    color: var(--navy-royal);
+    margin-bottom: 8px;
+}
+
+.timeline-panel p {
+    line-height: 1.7;
+    color: #5b6b75;
+    font-size: 15px;
+}
+
+/* القسم 4: الخريطة */
+.map-section {
+    background: linear-gradient(to bottom, #ffffff, var(--bg-creamy));
+}
+
+.map-card {
+    background: white;
+    padding: 50px 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #eee;
+}
+
+.map-card h3 {
+    font-family: 'Amiri', serif;
+    font-size: 26px;
+    color: var(--navy-royal);
+    margin-bottom: 12px;
+}
+
+.map-card p {
+    line-height: 1.8;
+    color: #5b6b75;
+}
+
+.map-icon-large {
+    font-size: 50px;
+    color: var(--gold-matte);
+    margin-bottom: 20px;
+}
+
+.btn-map {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 32px;
+    background-color: var(--navy-royal);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid var(--navy-royal);
+}
+
+.btn-map:hover {
+    background-color: transparent;
+    color: var(--navy-royal);
+    box-shadow: 0 5px 20px rgba(26, 46, 64, 0.15);
+}
+
+/* القسم 5: RSVP */
+.rsvp-section {
+    background-image: url('https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.rsvp-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 46, 64, 0.95);
+    z-index: 1;
+}
+
+.rsvp-section>* {
+    position: relative;
+    z-index: 2;
+}
+
+.rsvp-subtitle {
+    color: var(--gold-light);
+    margin-bottom: 40px;
+    opacity: 0.85;
+}
+
+.rsvp-form {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 14px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: right;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--gold-light);
+    font-size: 15px;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 15px;
+    color: var(--navy-royal);
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold-matte);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+}
+
+.radio-option {
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, var(--gold-matte), var(--gold-light));
+    border: none;
+    border-radius: 6px;
+    color: var(--navy-royal);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+
+/* === 6. الفوتر === */
+.site-footer {
+    min-height: auto;
+    background-color: var(--navy-royal);
+    color: var(--gold-light);
+    padding: 60px 20px 35px;
+    text-align: center;
+    flex-direction: column;
+}
+
+.footer-ornament {
+    font-size: 22px;
+    color: var(--gold-matte);
+    margin-bottom: 18px;
+    letter-spacing: 8px;
+}
+
+.footer-message {
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    line-height: 2;
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: var(--gold-light);
+}
+
+.footer-names {
+    font-family: 'Amiri', serif;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.footer-names span {
+    color: var(--gold-matte);
+    margin: 0 8px;
+}
+
+.footer-sub {
+    font-size: 13px;
+    color: rgba(230, 210, 169, 0.55);
+    letter-spacing: 1px;
+}
+
+/* === 📱 تجربة الموبايل === */
+@media (max-width: 768px) {
+    .couple-names {
+        font-size: 44px;
+    }
+
+    .quran-verse {
+        font-size: 19px;
+    }
+
+    .countdown-box {
+        min-width: 78px;
+        padding: 16px 12px;
+    }
+
+    .countdown-number {
+        font-size: 32px;
+    }
+
+    .rsvp-form {
+        padding: 25px 20px;
+    }
+
+    .footer-message {
+        font-size: 19px;
+        line-height: 1.9;
+    }
+}

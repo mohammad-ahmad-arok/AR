@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>دعوة زفاف عبد الرحمن ورهف</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+
+    <div id="envelope-wrapper">
+        <div class="envelope-stage">
+            <div class="envelope" onclick="openWeddingInvitation()">
+                <div class="envelope-front"></div>
+                <div class="envelope-flap" id="envelopeFlap"></div>
+                <div class="wax-seal" id="waxSeal">AR</div>
+            </div>
+            <div class="click-hint"><i class="fa-solid fa-hand-pointer pulse-icon"></i> اضغط على الختم لفتح الدعوة</div>
+        </div>
+    </div>
+
+    <main id="main-website">
+
+        <section class="hero-section">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <div class="quran-verse animate-text">
+                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ
+                    بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                </div>
+                <div class="wedding-title animate-text"><i class="fa-solid fa-rings-wedding"></i> حفل زفاف <i
+                        class="fa-solid fa-rings-wedding"></i></div>
+                <div class="couple-names animate-text">
+                    عبد الرحمن <span>&</span> رهف
+                </div>
+                <p class="hero-text animate-text">
+                    يتشرفان بدعوتكم لمشاركتهم فرحة العمر وسرد حكاية حبهم الأبدية في ليلة العمر.
+                </p>
+            </div>
+            <i class="fa-solid fa-chevron-down scroll-down"></i>
+        </section>
+
+        <section class="countdown-section">
+            <h2 class="section-title"><i class="fa-regular fa-clock"></i> المتبقي لليوم الكبير</h2>
+            <div class="section-divider"></div>
+            <p class="date-text">10 تموز 2026</p>
+            <div class="countdown-container animate-up">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">00</span>
+                    <span>أيام</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span>ساعة</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span>دقيقة</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span>ثانية</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title"><i class="fa-solid fa-calendar-day"></i> برنامج ليلة العمر</h2>
+            <div class="section-divider"></div>
+            <div class="timeline">
+                <div class="timeline-item animate-up">
+                    <div class="timeline-badge"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div class="timeline-panel">
+                        <span class="timeline-time">04:00 مساءً</span>
+                        <h4>مراسم كتب الكتاب</h4>
+                        <p>عقد القران المبارك وإعلان الفرحة رسمياً بحضور الأهل والأحبة.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-up">
+                    <div class="timeline-badge"><i class="fa-solid fa-music"></i></div>
+                    <div class="timeline-panel">
+                        <span class="timeline-time">07:00 مساءً</span>
+                        <h4>الزفة والاستقبال</h4>
+                        <p>بدء استقبال السادة الضيوف الكرام وانطلاق الزفة الشامية الفاخرة.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-up">
+                    <div class="timeline-badge"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="timeline-panel">
+                        <span class="timeline-time">09:30 مساءً</span>
+                        <h4>مأدبة العشاء الحفلي</h4>
+                        <p>دعوة كريمة لتناول طعام العشاء على شرف السادة المهنئين.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> أين سنلتقي؟</h2>
+            <div class="section-divider"></div>
+            <div class="map-card animate-up">
+                <div class="map-icon-large"><i class="fa-solid fa-location-dot"></i></div>
+                <h3>صالة قصر الملوك الفاخرة</h3>
+                <p>بكامل الشوق ننتظر تشريفكم لنا، يرجى الضغط على الزر أدناه للحصول على الاتجاهات الدقيقة.</p>
+                <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fa-solid fa-route"></i> افتح
+                    الموقع على الخريطة</a>
+            </div>
+        </section>
+
+        <section class="rsvp-section">
+            <h2 class="section-title" style="color: white;"><i class="fa-solid fa-envelope-open-text"></i> تأكيد الحضور
+            </h2>
+            <div class="section-divider"></div>
+            <p class="rsvp-subtitle">نرجو منكم تأكيد حضوركم لمساعدتنا في التجهيز</p>
+
+            <form class="rsvp-form animate-up" id="wedding-form">
+                <div class="form-group">
+                    <label for="name"><i class="fa-solid fa-user"></i> الاسم الكريم للضيف *</label>
+                    <input type="text" name="name" id="name" required placeholder="الاسم الثلاثي">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-clipboard-check"></i> هل ستشرفنا بحضورك؟ *</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="yes" checked> نعم، بكل سرور
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attendance" value="no"> أعتذر لظروف
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests"><i class="fa-solid fa-users"></i> عدد المرافقين (بالغين)</label>
+                    <select id="guests" name="guests">
+                        <option value="0">بدون مرافقين</option>
+                        <option value="1">شخص واحد</option>
+                        <option value="2">شخصين</option>
+                        <option value="3">3 أشخاص أو أكثر</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message"><i class="fa-solid fa-comment-dots"></i> أمنية للعروسين</label>
+                    <textarea name="message" id="message" rows="3" placeholder="كلمة طيبة..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> إرسال
+                    التأكيد</button>
+            </form>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-ornament">✦ ✦ ✦</div>
+            <p class="footer-message">
+                "شكراً لكونكم جزءاً من حكايتنا.. حضوركم يزيّن ليلتنا ويُكمل فرحتنا،
+                ونسأل الله أن يجمعنا دائماً على الخير والمحبة"
+            </p>
+            <div class="footer-names">عبد الرحمن <span>&</span> رهف</div>
+            <p class="footer-sub">10 تموز 2026 — بكل الشوق والمحبة</p>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
