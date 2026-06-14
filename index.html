@@ -14,17 +14,20 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 
 <body>
 
     <div id="envelope-wrapper">
+        <div class="overlay"></div>
         <div class="envelope-stage">
             <div class="envelope" onclick="openWeddingInvitation()">
                 <div class="envelope-front"></div>
                 <div class="envelope-flap" id="envelopeFlap"></div>
-                <div class="wax-seal" id="waxSeal">AR</div>
+                <div class="wax-seal" id="waxSeal"><img src="./assets/images/logo.svg" alt=""></div>
             </div>
             <div class="click-hint"><i class="fa-solid fa-hand-pointer pulse-icon"></i> اضغط على الختم لفتح الدعوة</div>
         </div>
@@ -44,15 +47,18 @@
                 <div class="couple-names animate-text">
                     عبد الرحمن <span>&</span> رهف
                 </div>
+                <p class="hero-text-t animate-text">
+                    آل عبارة & آل عرّوق
+                </p>
                 <p class="hero-text animate-text">
-                    يتشرفان بدعوتكم لمشاركتهم فرحة العمر وسرد حكاية حبهم الأبدية في ليلة العمر.
+                    يتشرفان بدعوتكم لمشاركتهم فرحة العمر .
                 </p>
             </div>
             <i class="fa-solid fa-chevron-down scroll-down"></i>
         </section>
 
         <section class="countdown-section">
-            <h2 class="section-title"><i class="fa-regular fa-clock"></i> المتبقي لليوم الكبير</h2>
+            <h2 class="section-title"><i class="fa-regular fa-clock"></i> المتبقي ليوم الحفل</h2>
             <div class="section-divider"></div>
             <p class="date-text">10 تموز 2026</p>
             <div class="countdown-container animate-up">
@@ -76,33 +82,59 @@
         </section>
 
         <section class="timeline-section">
-            <h2 class="section-title"><i class="fa-solid fa-calendar-day"></i> برنامج ليلة العمر</h2>
+            <h2 class="section-title"><i class="fa-solid fa-list-check"></i> برنامج وملاحظات الحفل</h2>
             <div class="section-divider"></div>
             <div class="timeline">
+
                 <div class="timeline-item animate-up">
-                    <div class="timeline-badge"><i class="fa-solid fa-pen-nib"></i></div>
-                    <div class="timeline-panel">
-                        <span class="timeline-time">04:00 مساءً</span>
-                        <h4>مراسم كتب الكتاب</h4>
-                        <p>عقد القران المبارك وإعلان الفرحة رسمياً بحضور الأهل والأحبة.</p>
-                    </div>
-                </div>
-                <div class="timeline-item animate-up">
-                    <div class="timeline-badge"><i class="fa-solid fa-music"></i></div>
+                    <div class="timeline-badge"><i class="fa-solid fa-clock"></i></div>
                     <div class="timeline-panel">
                         <span class="timeline-time">07:00 مساءً</span>
-                        <h4>الزفة والاستقبال</h4>
-                        <p>بدء استقبال السادة الضيوف الكرام وانطلاق الزفة الشامية الفاخرة.</p>
+                        <h4>استقبال الضيوف الكرام</h4>
+                        <p>تفتح الأبواب ويبدأ استقبال ضيوفنا الأعزاء، أهلاً وسهلاً بكم.</p>
                     </div>
                 </div>
+
                 <div class="timeline-item animate-up">
-                    <div class="timeline-badge"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="timeline-badge"><i class="fa-solid fa-crown"></i></div>
                     <div class="timeline-panel">
-                        <span class="timeline-time">09:30 مساءً</span>
-                        <h4>مأدبة العشاء الحفلي</h4>
-                        <p>دعوة كريمة لتناول طعام العشاء على شرف السادة المهنئين.</p>
+                        <span class="timeline-time">08:00 مساءً</span>
+                        <h4>إطلالة العرسان</h4>
+                        <p>تبدأ زفة العرسان في تمام الثامنة، نرجو منكم التكرم بعدم التأخير لتكتمل فرحتنا بحضوركم منذ
+                            البداية.</p>
                     </div>
                 </div>
+
+                <div class="timeline-item animate-up">
+                    <div class="timeline-badge"><i class="fa fa-camera"></i></div>
+                    <div class="timeline-panel">
+                        <span class="timeline-time">ملاحظة هامة</span>
+                        <h4>يمنع التصوير منعاً باتاً</h4>
+                        <p>نرجو منكم عدم التصوير بالهواتف المحمولة نهائياً، فقد خصصنا كادراً احترافياً لتوثيق أجمل
+                            اللحظات لتستمتعوا بوقتكم معنا.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-up">
+                    <div class="timeline-badge"><i class="fa-solid fa-moon"></i></div>
+                    <div class="timeline-panel">
+                        <span class="timeline-time">ملاحظة هامة</span>
+                        <h4>نوم هنيء لأطفالكم</h4>
+                        <p>جنة الأطفال منازلهم.. نتمنى لأحبائنا الصغار أحلاماً سعيدة، ونعتذر عن عدم استقبال الأطفال في
+                            القاعة.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-up">
+                    <div class="timeline-badge"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="timeline-panel">
+                        <span class="timeline-time">تأكيد الحضور</span>
+                        <h4>الاعتذار عن الحضور</h4>
+                        <p>في حال تعذر حضوركم، نرجو منكم التكرم بإبلاغنا قبل بداية شهر 7 (يوليو) ليتسنى لنا ترتيب وتنسيق
+                            القاعة، شاكرين ومقدرين تفهمكم.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -111,9 +143,14 @@
             <div class="section-divider"></div>
             <div class="map-card animate-up">
                 <div class="map-icon-large"><i class="fa-solid fa-location-dot"></i></div>
-                <h3>صالة قصر الملوك الفاخرة</h3>
-                <p>بكامل الشوق ننتظر تشريفكم لنا، يرجى الضغط على الزر أدناه للحصول على الاتجاهات الدقيقة.</p>
-                <a href="https://maps.google.com" target="_blank" class="btn-map"><i class="fa-solid fa-route"></i> افتح
+                <h3>صالات جنة حمص </h3>
+                <p class="map-loc">الصالة الملكية - صالة الطحان</p>
+                <p>بكامل الشوق ننتظر تشريفكم لنا
+                    <br>
+                    يرجى الضغط على الزر أدناه للحصول على الاتجاهات الدقيقة.
+                </p>
+                <a href="https://maps.app.goo.gl/hSJpqM21DdRaCBd49" target="_blank" class="btn-map"><i
+                        class="fa-solid fa-route"></i> افتح
                     الموقع على الخريطة</a>
             </div>
         </section>
@@ -140,16 +177,6 @@
                             <input type="radio" name="attendance" value="no"> أعتذر لظروف
                         </label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="guests"><i class="fa-solid fa-users"></i> عدد المرافقين (بالغين)</label>
-                    <select id="guests" name="guests">
-                        <option value="0">بدون مرافقين</option>
-                        <option value="1">شخص واحد</option>
-                        <option value="2">شخصين</option>
-                        <option value="3">3 أشخاص أو أكثر</option>
-                    </select>
                 </div>
 
                 <div class="form-group">
