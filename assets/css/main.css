@@ -538,7 +538,7 @@ section {
 .rsvp-section {
     background-image: url('../images/form-back.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: left;
     position: relative;
 }
 

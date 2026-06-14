@@ -1,29 +1,57 @@
-// === 1. أنميشن فتح الظرف (GSAP) ===
+const weddingAudio = new Audio('../audio/entrance.mp3');
+weddingAudio.volume = 0.6; // تحديد مستوى الصوت (من 0 إلى 1)
+weddingAudio.loop = true;  // تشغيل الموسيقى بشكل متكرر مستمر
+
+/**
+ * دالة فتح ظرف الدعوة وبدء المؤثرات البصرية والصوتية
+ */
 function openWeddingInvitation() {
     const envelope = document.querySelector('.envelope');
-    envelope.style.pointerEvents = 'none'; // منع الضغط مرتين
 
+    // منع الضغط المتكرر على الظرف أثناء حركة الأنميشن
+    if (envelope) {
+        envelope.style.pointerEvents = 'none';
+    }
+
+    // تشغيل نغمة الدخول فوراً عند الضغط
+    weddingAudio.play().catch(error => {
+        console.warn("المتصفح حظر التشغيل التلقائي للصوت مؤقتاً:", error);
+    });
+
+    // بناء تايملاين الأنميشن باستخدام GSAP
     const tl = gsap.timeline({
         onComplete: () => {
-            document.body.style.overflowY = 'auto'; // تفعيل السكرول
+            document.body.style.overflowY = 'auto'; // تفعيل السكرول بعد انتهاء الأنميشن
             document.body.style.height = 'auto';
-            document.getElementById('envelope-wrapper').remove();
-            initScrollAnimations();
+
+            const envelopeWrapper = document.getElementById('envelope-wrapper');
+            if (envelopeWrapper) {
+                envelopeWrapper.remove(); // حذف عنصر الظرف نهائياً من الـ DOM لتخفيف الصفحة
+            }
+
+            // تشغيل أنميشن التمرير الخاص بباقي عناصر الموقع
+            if (typeof initScrollAnimations === "function") {
+                initScrollAnimations();
+            }
         }
     });
 
+    // سيكوينس الأنميشن (Timeline Sequence)
     tl.to(".click-hint", { opacity: 0, y: 10, duration: 0.25 })
-        // الختم يتشقق ويختفي
+
+        // الختم الشمعي يتشقق ويختفي
         .to("#waxSeal", { scale: 1.4, opacity: 0, rotation: -25, duration: 0.45, ease: "power2.in" })
-        // الغطاء ينفتح للخلف
+
+        // غطاء الظرف ينفتح للأعلى/الخلف
         .to("#envelopeFlap", { rotationX: 180, duration: 0.7, ease: "power2.inOut" }, "-=0.1")
-        // الظرف كامل يتمدد ويتلاشى للأعلى تاركاً المجال للموقع
+
+        // الظرف كامل يتمدد ويتلاشى للأعلى تاركاً المجال للموقع الأساسي
         .to(".envelope-stage", { scale: 1.15, opacity: 0, duration: 0.5, ease: "power1.in" }, "-=0.2")
         .to("#envelope-wrapper", { opacity: 0, duration: 0.5 }, "-=0.3")
         .set("#envelope-wrapper", { pointerEvents: "none" })
         .to("#main-website", { opacity: 1, visibility: "visible", duration: 0.1 }, "-=0.4")
 
-        // أنميشن دخول نصوص الهيرو
+        // أنميشن دخول نصوص الهيرو (Hero Section) بشكل تدريجي راقٍ
         .from(".hero-content .animate-text", {
             y: 50,
             opacity: 0,
@@ -31,6 +59,8 @@ function openWeddingInvitation() {
             stagger: 0.2,
             ease: "back.out(1.5)"
         }, "-=0.3")
+
+        // ظهور سهم التوجيه للأسفل
         .from(".scroll-down", {
             opacity: 0,
             y: -10,
