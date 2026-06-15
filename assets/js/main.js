@@ -1,7 +1,5 @@
-const weddingAudio = new Audio('../audio/entrance.mp3');
-weddingAudio.volume = 0.6; // تحديد مستوى الصوت (من 0 إلى 1)
-weddingAudio.loop = true;  // تشغيل الموسيقى بشكل متكرر مستمر
-
+const weddingAudio = document.getElementById('weddingAudioPlayer');
+weddingAudio.volume = 0.6;
 /**
  * دالة فتح ظرف الدعوة وبدء المؤثرات البصرية والصوتية
  */
